@@ -11,4 +11,5 @@ def index(request):
 
 def profile(request):
     
+    
     return render(request,'temps/profile.html')
