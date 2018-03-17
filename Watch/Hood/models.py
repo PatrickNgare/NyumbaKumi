@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save
 from django.contrib.auth.models import User
 
 
@@ -69,7 +70,12 @@ class Business(models.Model):
 
 
 
+def create_profile(sender, **kwargs):
+    if kwargs['created']:
+        profile = User_profile.objects.create(user_id=kwargs['instance'])
 
+
+post_save.connect(create_profile, sender=User)
 
 
 
