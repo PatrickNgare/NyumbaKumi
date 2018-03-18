@@ -1,6 +1,8 @@
 
 from django import forms
-from .models import User_profile
+from .models import User_profile,Post
+
+
 class EditProfile(forms.ModelForm):
     
     class Meta:
@@ -8,3 +10,8 @@ class EditProfile(forms.ModelForm):
         fields = ['name', 'email']
     
 
+class UploadForm(forms.ModelForm):
+    
+    class Meta:
+        model = Post
+        exclude = ['user','profile']
