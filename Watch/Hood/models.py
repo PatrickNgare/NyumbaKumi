@@ -44,6 +44,12 @@ class User_profile(models.Model):
     user_id=models.ForeignKey(User,null=True)
 
 
+    @classmethod
+    def get_profile(cls): 
+        profile=User_profile.objects.all()
+        return profile
+
+
 class Business(models.Model):
     Bizname=models.CharField(max_length=60)
     user=models.ForeignKey(User, null=True,on_delete=models.CASCADE)
@@ -68,7 +74,50 @@ class Business(models.Model):
     def update_business():
         pass
 
+class Post(models.Model):
+    image=models.ImageField(upload_to='gallery/',blank=True,null=True)
+    image_caption=models.TextField(max_length=200)
+    profile=models.ForeignKey(User_profile,null=True,blank=True)
+    postdate=models.DateTimeField(auto_now_add=True,null=True)
+    user = models.ForeignKey(User, null=True)        
 
+
+    class Meta:
+        ordering=['-postdate']
+
+  
+    @classmethod
+    def my_post(cls):
+        
+        posts = cls.objects.all()
+        return posts
+
+    def save_post(self):
+        
+        self.save()   
+
+    @classmethod
+    def get_post_by_id(cls,post_id):
+        
+        posts=cls.objects.get(id=post_id)
+
+        return posts 
+
+    @classmethod
+    def search_by_user(cls,search_term):
+        
+        posts=cls.objects.filter(post_icontains=search_term)
+        return posts
+
+
+    @classmethod
+    def delete_post():    
+       pass
+
+
+    @classmethod
+    def update_caption():   
+       pass
 
 def create_profile(sender, **kwargs):
     if kwargs['created']:
