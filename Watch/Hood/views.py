@@ -25,17 +25,18 @@ def upload(request):
             upload.profile = profile
             upload.save()
             
-            return redirect('index')
+            return redirect('post')
             messages.success(request, 'Status  updated '\
                                       'successfully')
         else:
             form = UploadForm()
     return render(request,'temps/upload.html',{"title":title, "user":current_user,"form":form})
-     
-def post(request):
 
+@login_required(login_url='/accounts/login/')    
+def post(request):
+    current_user = request.user
     update= Post.objects.all()
-    return render(request,'temps/post.html',{"update":update})
+    return render(request,'temps/post.html',{"update":update,"user":current_user})
   
 
 def group(request):
