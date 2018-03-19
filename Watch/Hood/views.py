@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import User_profile,Post
+from .models import User_profile,Post,Neigbourhood,Business
 from django.contrib.auth.decorators import login_required
 from .forms import UploadForm
 
@@ -36,3 +36,17 @@ def post(request):
 
     update= Post.objects.all()
     return render(request,'temps/post.html',{"update":update})
+  
+
+def group(request):
+    
+    group=Neigbourhood.objects.all()
+
+    return render(request,'temps/group.html',{'group':group})  
+
+
+
+def allbiz(request):
+    business=Business.objects.all()
+
+    return render(request,'temps/allbiz.html',{"business":business})    
