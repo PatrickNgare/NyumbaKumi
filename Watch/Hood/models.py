@@ -42,6 +42,7 @@ class User_profile(models.Model):
     neigbourhood=models.ForeignKey(Neigbourhood,null=True,on_delete=models.CASCADE)
     email=models.EmailField()
     user_id=models.ForeignKey(User,null=True)
+    profile_photo=models.ImageField(upload_to='gallery/',blank=True,null=True)
 
 
     @classmethod
@@ -56,6 +57,12 @@ class Business(models.Model):
     neigbourhood=models.ForeignKey(Neigbourhood,on_delete=models.CASCADE)
     biz_email=models.EmailField()
     biz_desc=models.CharField(max_length=100)
+
+    @classmethod
+    def search_biz(cls,search_term):
+        
+        business=cls.objects.filter(Bizname__icontains=search_term)
+        return business
 
 
     @classmethod
