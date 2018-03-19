@@ -1,1 +1,1 @@
-web:gunicorn​ Watch.wsgi​
+web: gunicorn​ Watch.wsgi​
