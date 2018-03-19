@@ -119,6 +119,13 @@ class Post(models.Model):
     def update_caption():   
        pass
 
+
+
+
+
+
+
+
 def create_profile(sender, **kwargs):
     if kwargs['created']:
         profile = User_profile.objects.create(user_id=kwargs['instance'])
