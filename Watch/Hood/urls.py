@@ -10,7 +10,9 @@ urlpatterns = [
 url(r'^$',views.index,name='index'), 
 
 url(r'^upload/',views.upload, name='upload'),
-url(r'^posts/',views.post,name='post')
+url(r'^posts/',views.post,name='post'),
+url(r'^group/',views.group,name='group'),
+url(r'^allbiz/',views.allbiz,name='allbiz')
 
 ]
 
