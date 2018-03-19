@@ -3,27 +3,13 @@
 {% block content %}
 {{ block.super }}
 
-<div class="Instagram-card">{% for up in update %}
-    <div class="Instagram-card-header">
-    </div>
-
-    <div class="Instagram-card-image">
-        {% if up.image %}
-      <img src= "{{up.image.url}}" height="400px" width="600px"/>
-      {% endif %}
-    </div>
-     
-    <div class="Instagram-card-content">
-     
-    <hr>
-    
-    </div> 
-    <div class="Instagram-card-footer">
-      <a class="footer-action-icons"href="#"><i class="fa fa-heart-o" ></i></a>
+<div class="jumbotron">
+    <h1 class="display-3">Welcome to nyumba kumi</h1>
+    <p class="lead">Due to the rise in insecurity in Kenya, an amicable solution was needed to curb the problem..</p>
+    <hr class="my-4">
+    <p>MY app uses this initiative to enhance security by digitizing the ‘NYUMBA KUMI’ initiative and providing enhanced methods of communication between a person’s neighbours and the leader of the initiative which is either the chief or an elder in the location covered</p>
+    <p class="lead">
       
- <a class="footer-action-icons"href="#"><i class="fa fa-ellipsis-h"></i></a>
-    </div>
-    {%endfor%}
- 
+    </p>
   </div>
 {% endblock  %}
