@@ -51,3 +51,22 @@ def allbiz(request):
     business=Business.objects.all()
 
     return render(request,'temps/allbiz.html',{"business":business})    
+
+def search_results(request):
+    
+    if 'business' in request.GET and request.GET["business"]:
+        search_term = request.GET.get("business")
+        business = Business.search_biz(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'temps/search.html',{"message":message,"business": business})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'temps/search.html',{"message":message})    
+
+@login_required(login_url='/accounts/login/')        
+def single_profile(request):
+    current_user=request.user
+    profiles=User_profile.objects.all()
+    return render(request,'temps/userprof.html',{"profiles":profiles,"user":current_user})
